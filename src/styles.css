@@ -658,6 +658,8 @@
    padding-left: var(--bs-gutter-x, 0.75rem);
    margin-right: auto;
    margin-left: auto;
+   margin-top: 10px;
+   margin-bottom: 10px;
  }
  
  @media (min-width: 576px) {
@@ -11551,3 +11553,12 @@
  .modal-header, .modal-footer {
    background-color: rgba(255, 255, 255, 0.075);
  }
+
+ .marginForm{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.btn-block{
+  width: 100%;
+}
