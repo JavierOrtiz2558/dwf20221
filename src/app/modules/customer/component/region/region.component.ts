@@ -58,6 +58,7 @@ export class RegionComponent implements OnInit {
           console.log(this.region);
           this.getRegions();
           this.closeModal();
+          $("#nueva").removeAttr("disabled");
         },
         err => console.log(err)
       )
@@ -66,7 +67,8 @@ export class RegionComponent implements OnInit {
         res => {
           console.log(this.region);
           this.getRegions();
-          this.closeModal();
+          this.closeModalActualiza();
+          $("#region_modal").removeAttr("disabled");
         },
         err => console.log(err)
       )
@@ -74,16 +76,18 @@ export class RegionComponent implements OnInit {
   }
 
   createRegion(){
+    $("#nueva").attr("disabled");
     this.post_region = true;
     this.formulario.reset();
     $("#region_modal").modal("show");
   }
 
   updateRegion(region: Region){
+    $("#actu").attr("disabled");
     this.post_region = false;
     this.formulario.controls['id_region'].setValue(region.id_region);
     this.formulario.controls['region'].setValue(region.region);
-    $("#region_modal").modal("show");
+    $("#actualiza_region").modal("show");
   }
 
   deleteRegion(id_region: number){
@@ -102,6 +106,11 @@ export class RegionComponent implements OnInit {
 
   closeModal(){
     $("#region_modal").modal("hide");
+    this.submitted = false;
+  }
+
+  closeModalActualiza(){
+    $("#actualiza_region").modal("hide");
     this.submitted = false;
   }
 
