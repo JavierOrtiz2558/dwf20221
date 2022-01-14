@@ -47,7 +47,7 @@
         </button>
     </div>
 </div>
-
+<!--modal actualiza Region-->
 <div class="modal fade" tabindex="-1" role="dialog" id="actualiza_region">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -58,14 +58,14 @@
           </button>
         </div>
         <div class="modal-body">
-            <form [formGroup] = "formulario" (ngSubmit) = "onSubmit()">
+            <form [formGroup] = "formulario" (ngSubmit) = "onSubmitActu()">
                 <div class="form-group">
                   <label for="rate">Ingresa el nuevo nombre de la Region<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control marginForm" id="rate" formControlName="rate" placeholder="region">
-                  <div *ngIf="submitted && f.region.errors">
-                      <div *ngIf="f.region.errors.required">
-                          <span class="text-danger">El nombre de la region es obligatorio</span>
-                      </div>
+                  <input type="text" class="form-control marginForm" id="region" formControlName="region" placeholder="region">
+                  <div *ngIf="f.region.errors">
+                    <div *ngIf="f.region.errors.required">
+                      <span class="text-danger">El nombre de la region es obligatorio</span>
+                    </div>
                   </div>
                 </div>
                 <div>
@@ -81,7 +81,7 @@
       </div>
     </div>
   </div>
-
+<!--modal agrega Region-->
   <div class="modal fade" tabindex="-1" role="dialog" id="region_modal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -95,17 +95,17 @@
             <form [formGroup] = "formulario" (ngSubmit) = "onSubmit()">
                 <div class="form-group">
                   <label for="rate">Ingresa el nombre de la nueva Region<span class="text-danger">*</span></label>
-                  <input type="text" class="form-control marginForm" id="rate" formControlName="rate" placeholder="region">
-                  <div *ngIf="submitted && f.region.errors">
+                  <input type="text" class="form-control marginForm" id="region" formControlName="region" placeholder="region">
+                  <div *ngIf="f.region.errors">
                       <div *ngIf="f.region.errors.required">
                           <span class="text-danger">El nombre de la region es obligatorio</span>
                       </div>
                   </div>
                 </div>
                 <div>
-                    <br>
-                    <p class="text-right"><span class="text-danger">*</span>Campos obligatorios</p>
-                    <button type="submit" id="nueva" class="btn btn-success btn-block">Crear</button>
+                  <br>
+                  <p class="text-right"><span class="text-danger">*</span>Campos obligatorios</p>
+                  <button type="submit" id="nueva" class="btn btn-success btn-block">Crear</button>
                 </div>
               </form>
         </div>
