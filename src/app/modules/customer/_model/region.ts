@@ -3,7 +3,7 @@ export class Region{
     region: string;
 
     constructor(){
-        this.id_region = 0;
+        this.id_region = 1;
         this.region = "";
     }
 }

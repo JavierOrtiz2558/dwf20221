@@ -51,40 +51,40 @@ export class RegionComponent implements OnInit {
   }
 
   onSubmit(){
-    this.submitted = true;
-    if(this.post_region){
-      this.region_service.createRegion(this.formulario.value).subscribe(
-        res => {
-          console.log(this.region);
-          this.getRegions();
-          this.closeModal();
-          $("#nueva").removeAttr("disabled");
-        },
-        err => console.log(err)
-      )
-    }else{
+    $("#region_modal").attr("disabled");
+    this.region_service.createRegion(this.formulario.value).subscribe(
+      res => {
+        console.log(this.region);
+        this.getRegions();
+        this.closeModal(); 
+      },
+      err => console.log(err)
+    )
+    $("#region_modal").removeAttr("disabled");
+  }
+
+  onSubmitActu(){
+    $("#actualiza_region").attr("disabled");
       this.region_service.updateRegion(this.formulario.value).subscribe(
         res => {
           console.log(this.region);
           this.getRegions();
           this.closeModalActualiza();
-          $("#region_modal").removeAttr("disabled");
         },
         err => console.log(err)
       )
-    }
+      $("#actualiza_region").removeAttr("disabled");
   }
 
   createRegion(){
-    $("#nueva").attr("disabled");
-    this.post_region = true;
+    
     this.formulario.reset();
     $("#region_modal").modal("show");
   }
 
   updateRegion(region: Region){
-    $("#actu").attr("disabled");
-    this.post_region = false;
+    
+    this.formulario.reset();
     this.formulario.controls['id_region'].setValue(region.id_region);
     this.formulario.controls['region'].setValue(region.region);
     $("#actualiza_region").modal("show");
@@ -106,12 +106,10 @@ export class RegionComponent implements OnInit {
 
   closeModal(){
     $("#region_modal").modal("hide");
-    this.submitted = false;
   }
 
   closeModalActualiza(){
     $("#actualiza_region").modal("hide");
-    this.submitted = false;
   }
 
 }
