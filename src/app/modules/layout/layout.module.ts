@@ -8,12 +8,16 @@ import { ExchangeRateComponent } from '../exchange-rate/component/exchange-rate/
 import { RegionComponent } from '../customer/component/region/region.component';
 import { HomeComponent } from '../home/component/home/home.component';
 import { CategoryComponent } from '../product/component/category/category.component';
+import { CustomerComponent } from '../customer/component/customer/customer.component';
+import { CustomerDetailComponent } from '../customer/component/customer-detail/customer-detail.component';
 
 const routes: Routes = [
   {path: 'exchange-rate', component: ExchangeRateComponent},
   {path: 'region', component: RegionComponent},
   {path: '', component: HomeComponent},
-  {path: 'category', component: CategoryComponent}
+  {path: 'category', component: CategoryComponent},
+  {path: 'customer', component: CustomerComponent},
+  {path: 'customer-detail/:rfc', component: CustomerDetailComponent}
 ];
 
 @NgModule({
