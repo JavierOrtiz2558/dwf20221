@@ -33,20 +33,22 @@
                         <td>
                             {{ category.category }}
                             &nbsp;
-                            <button (click)="updateProductCategory()" type="button" class="btn btn-link btn-sm">Actualizar Categoria&nbsp;<i class="fas fa-user"></i>&nbsp;</button>
+                            <button (click)="updateProductCategory()" type="button" class="btn btn-link btn-sm">Actualizar Categoria&nbsp;<i class="fas fa-edit"></i>&nbsp;</button>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
 
-        <div class="car-footer">
-            <h3>
-                <button (click)="uploadProductImage()" style="float: right" type="button" class="btn btn-primary btn-sm">
-                    Agregar Imagen&nbsp;<i class="fas fa-edit"></i>
-                </button>
-                &nbsp;
-            </h3>
+        <div class="car-footer" style="margin-bottom: 25px;">
+            <button style="float: right" type="button" class="btn btn-primary btn-sm botonder">
+                Agregar al carrito
+                <i class="fas fa-car"></i>
+            </button>
+            <input style="float:right" class="cantidad" id="articulos" type="number" value="1" min="1" max="20">
+            <button (click)="uploadProductImage()" style="float: left" type="button" class="btn btn-primary btn-sm botonizq">
+                Agregar Imagen&nbsp;<i class="fas fa-edit"></i>
+            </button>
         </div>
     </div>
 </div>
