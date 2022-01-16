@@ -11,6 +11,7 @@ export class ProductService {
 
   private apiURI = ApisURI.dwf2021apiURI;
   private resource = "/product";
+  private resourceRandom = "/product/random";
 
   constructor(
     private http: HttpClient
@@ -38,5 +39,13 @@ export class ProductService {
 
   updateProductCategory(id_product: number, category: Category){
     return this.http.put(this.apiURI + this.resource + `/${id_product}` + "/category", category);
+  }
+
+  getProductsCategory(category: Category){
+    this.http.get<Product[]>(this.apiURI + this.resource + `/${category.id_category}`);
+  }
+
+  getProductsRandom(){
+    return this.http.get<Product[]>(this.apiURI + this.resourceRandom);
   }
 }
