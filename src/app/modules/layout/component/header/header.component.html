@@ -8,7 +8,7 @@
                     <a class="nav-link dropdown-toggle text-white navbar-brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">CATEGORIAS</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" routerLink="/">Aleatorio</a></li>
-                        <li *ngFor="let category of categories"><a class="dropdown-item" routerLink="/" >{{ category.category }}</a></li>
+                        <li *ngFor="let category of categories"><a class="dropdown-item" routerLink="filter/{{ category.id_category }}" >{{ category.category }}</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link text-white navbar-brand" routerLink="/">FACTURAS</a></li>

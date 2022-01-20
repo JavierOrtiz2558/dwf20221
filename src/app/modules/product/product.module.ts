@@ -5,6 +5,7 @@ import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { ProductComponent } from './component/product/product.component';
 import { ProductDetailComponent } from './component/product-detail/product-detail.component';
 import { NgxPhotoEditorModule } from 'ngx-photo-editor';
+import { FilterComponent } from './component/filter/filter.component';
 
 
 
@@ -12,7 +13,8 @@ import { NgxPhotoEditorModule } from 'ngx-photo-editor';
   declarations: [
     CategoryComponent,
     ProductComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { NgxPhotoEditorModule } from 'ngx-photo-editor';
   exports: [
     CategoryComponent,
     ProductComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    FilterComponent
   ]
 })
 export class ProductModule { }
