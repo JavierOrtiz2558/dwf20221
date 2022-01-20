@@ -140,7 +140,7 @@
                     <div class="form-group">
                         <label for="rate">Selecciona la categoria a la que pertenece el producto<span class="text-damanger">*</span></label>
                         <select class="form-control" formControlName="id_category" id="id_category">
-                            <option value="0" disabled>Selecciona una Categoria</option>
+                            <option value="" disabled>Selecciona una Categoria</option>
                             <option *ngFor="let category of categories" [ngValue]="category.id_category">{{ category.category }}</option>
                         </select>
                     </div>

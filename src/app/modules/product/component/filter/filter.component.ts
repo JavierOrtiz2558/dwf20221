@@ -1,38 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from 'src/app/modules/product/_model/product';  
+import { Product } from 'src/app/modules/product/_model/product'; 
 import { ProductService } from 'src/app/modules/product/_service/product.service'; 
 import { ProductImageService } from 'src/app/modules/product/_service/product-image.service'; 
 import { ProductImage } from 'src/app/modules/product/_model/productImage'; 
-import { Router } from '@angular/router'; 
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-filter',
+  templateUrl: './filter.component.html',
+  styleUrls: ['./filter.component.css']
 })
-export class HomeComponent implements OnInit {
+export class FilterComponent implements OnInit {
 
-  productsRamdom: Product[] = [];
-  productRamdom: Product = new Product();
-
+  productsCategory: Product[] = [];
+  productCategory: Product = new Product();
   //Imagenes del producto
   images: ProductImage[] = [];
+
+  id_category: any = null;
 
   constructor(
     private product_service: ProductService,
     private router: Router,
     private product_image_service: ProductImageService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.getProductsRandom();
+    this.id_category = this.route.snapshot.paramMap.get('id_category');
+    this.getProductsCategory(this.id_category);
   }
 
-  getProductsRandom(){
-    this.product_service.getProductsRandom().subscribe(
+  getProductsCategory(id_category: number){
+    this.product_service.getProductsCategory(id_category).subscribe(
       res => {
-        this.productsRamdom = res;
-        this.getProductImages(this.productRamdom.id_product);
+        this.productsCategory = res;
+        this.getProductImages(this.productCategory.id_product);
       },
       err => console.log(err)
     )
