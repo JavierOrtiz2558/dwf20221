@@ -6,6 +6,8 @@ import { CustomerComponent } from './component/customer/customer.component';
 import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
 import { NgxPhotoEditorModule } from "ngx-photo-editor";
 import { CartComponent } from './component/cart/cart.component';
+import { InvoiceComponent } from './component/invoice/invoice.component';
+import { InvoiceDetailComponent } from './component/invoice-detail/invoice-detail.component';
 
 
 
@@ -14,7 +16,9 @@ import { CartComponent } from './component/cart/cart.component';
     RegionComponent,
     CustomerComponent,
     CustomerDetailComponent,
-    CartComponent
+    CartComponent,
+    InvoiceComponent,
+    InvoiceDetailComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +30,9 @@ import { CartComponent } from './component/cart/cart.component';
     RegionComponent,
     CustomerComponent,
     CustomerDetailComponent,
-    CartComponent
+    CartComponent,
+    InvoiceComponent,
+    InvoiceDetailComponent
   ]
 })
 export class CustomerModule { }

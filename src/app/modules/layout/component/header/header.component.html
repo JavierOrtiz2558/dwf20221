@@ -11,7 +11,7 @@
                         <li *ngFor="let category of categories"><a class="dropdown-item" href="filter/{{ category.id_category }}" >{{ category.category }}</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link text-white navbar-brand" routerLink="/">FACTURAS</a></li>
+                <li class="nav-item"><a class="nav-link text-white navbar-brand" routerLink="/invoice/OIMF930721J93">FACTURAS</a></li>
 
             </ul>
             <div>
@@ -19,7 +19,6 @@
                 <button class="btn btn-warning" (click)="onSubmit()">
                     <i class="bi-cart-fill me-1"></i>
                     Carrito
-                    <span class="badge bg-warning text-black ms-1 rounded-pill" name="cart">0</span>
                 </button>
             </div>
         </div>
@@ -63,7 +62,7 @@
             </div>
 
             <div class="modal-footer">
-                <button type="submit" class="btn btn-success" style="margin-right: 10px;">Pagar</button>
+                <button (click)="purchase('OIMF930721J93')" type="submit" class="btn btn-success" style="margin-right: 10px;">Pagar</button>
                 <button (click)="deleteCart('OIMF930721J93')" type="submit" class="btn btn-danger">Eliminar Carrito</button>
                 <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>
