@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <!-- Body -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="text-center">id_item</th>
+                        <th class="text-center">Codigo producto</th>
+                        <th class="text-center">Cantidad</th>
+                        <th class="text-center">IVA</th>
+                        <th class="text-center">subtotal</th>
+                        <th class="text-center">total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of items">
+                        <td class="text-center">{{ item.id_item }}</td>
+                        <td class="text-center">{{ item.gtin }}</td>
+                        <td class="text-center">${{ item.quantity }}</td>
+                        <td class="text-center">${{ item.taxes }}</td>
+                        <td class="text-center">${{ item.subtotal }}</td>
+                        <td class="text-center">${{ item.total }}</td>
+                        <td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

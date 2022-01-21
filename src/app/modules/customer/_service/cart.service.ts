@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Cart } from '../_model/cart';
 import { Carts } from '../_model/carts';
-import { Customer } from '../_model/customerImage';
-import { Product } from '../../product/_model/product';
 import { HttpClient } from '@angular/common/http';
 import { ApisURI } from 'src/app/shared/apis-uri';
 

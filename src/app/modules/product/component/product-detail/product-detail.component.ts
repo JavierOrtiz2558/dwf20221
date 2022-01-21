@@ -284,15 +284,39 @@ export class ProductDetailComponent implements OnInit {
   }
 
   addToCart(cart: Cart){
-    this.cart_service.addToCart(cart).subscribe(
-      res => {
-        console.log("agregado")
-      },
-      err => console.log(err)
-    )
+    Swal.fire({
+      title: 'Deseas Agregarlo al carrito?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Si, agregar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.cart_service.addToCart(cart).subscribe(
+          res => {
+            Swal.fire({
+              icon: 'success',
+              title: 'Se agrego exitosamente el articulo!',
+              showConfirmButton: false,
+              timer: 1750
+            })
+            this.closeModal();
+            location.reload();
+          },
+          err => {console.log(err),
+            Swal.fire({
+              icon: 'error',
+              title: 'No se pudo agregar tu articulo',
+              showConfirmButton: false,
+              timer: 1750
+            })}
+        )
+      }
+    })
   }
 
-  agrega(){ 
+  agrega(){
     this.cart.id_product = this.product.id_product;
     this.cart.rfc = this.rfc;
     this.cart.quantity = this.formularioArticulos.controls['articulos'].value;

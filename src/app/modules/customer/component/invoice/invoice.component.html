@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <!-- Body -->
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-light">
+                    <tr>
+                        <th class="text-center">Factura</th>
+                        <th class="text-center">SubTotal</th>
+                        <th class="text-center">IVA</th>
+                        <th class="text-center">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pago of pagos">
+                        <td class="text-center">{{ pago.id_invoice }}</td>
+                        <td class="text-center">${{ pago.subtotal }}</td>
+                        <td class="text-center">${{ pago.taxes }}</td>
+                        <td class="text-center">${{ pago.total }}</td>
+                        <td>
+                            <button (click)="invoiceDetail(pago.id_invoice)" type="button" class="btn btn-primary btn-sm">
+                                Ver Detalle
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
