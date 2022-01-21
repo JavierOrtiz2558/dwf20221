@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Product } from '../../_model/product';
 import { ProductImage } from '../../_model/productImage';
 import { Category } from '../../_model/category';
+import { Cart } from 'src/app/modules/customer/_model/cart';
+import { CartService } from 'src/app/modules/customer/_service/cart.service';
 import { ProductService } from '../../_service/product.service';
 import { ProductImageService } from '../../_service/product-image.service';
 import { CategoryService } from '../../_service/category.service';
@@ -24,6 +26,10 @@ export class ProductDetailComponent implements OnInit {
   //Datos del producto
   product: Product = new Product();
   gtin: any = null;
+
+  //agregar a carrito
+  cart: Cart = new Cart();
+  rfc: string = "OIMF930721J93";
 
   //categorias asociadas al producto
   categories: Category[] = [];
@@ -52,6 +58,10 @@ export class ProductDetailComponent implements OnInit {
     id_category: ['', Validators.required],
   })
 
+  formularioArticulos = this.formBuilder.group({
+    articulos: [''],
+  })
+
   //Validacion de envio de informacion al registrar
   submitted = false;
 
@@ -59,6 +69,7 @@ export class ProductDetailComponent implements OnInit {
     private product_service: ProductService,
     private product_image_service: ProductImageService,
     private category_service: CategoryService,
+    private cart_service: CartService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
@@ -270,5 +281,21 @@ export class ProductDetailComponent implements OnInit {
         )
       }
     })
+  }
+
+  addToCart(cart: Cart){
+    this.cart_service.addToCart(cart).subscribe(
+      res => {
+        console.log("agregado")
+      },
+      err => console.log(err)
+    )
+  }
+
+  agrega(){ 
+    this.cart.id_product = this.product.id_product;
+    this.cart.rfc = this.rfc;
+    this.cart.quantity = this.formularioArticulos.controls['articulos'].value;
+    this.addToCart(this.cart);
   }
 }

@@ -8,20 +8,66 @@
                     <a class="nav-link dropdown-toggle text-white navbar-brand" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">CATEGORIAS</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" routerLink="/">Aleatorio</a></li>
-                        <li *ngFor="let category of categories"><a class="dropdown-item" routerLink="filter/{{ category.id_category }}" >{{ category.category }}</a></li>
+                        <li *ngFor="let category of categories"><a class="dropdown-item" href="filter/{{ category.id_category }}" >{{ category.category }}</a></li>
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link text-white navbar-brand" routerLink="/">FACTURAS</a></li>
 
             </ul>
-            <form class="d-flex">
-                 <!-- Button to Open the Modal -->
-                <button class="btn btn-warning" onclick="timeOut()"  data-bs-toggle="modal" data-bs-target="#dialogTotal">
+            <div>
+                 <!-- Carrito de compras -->
+                <button class="btn btn-warning" (click)="onSubmit()">
                     <i class="bi-cart-fill me-1"></i>
                     Carrito
-                    <span class="badge bg-warning text-black ms-1 rounded-pill" id="cart">0</span>
+                    <span class="badge bg-warning text-black ms-1 rounded-pill" name="cart">0</span>
                 </button>
-            </form>
+            </div>
         </div>
     </div>
 </nav>
+
+<div class="modal" tabindex="-1" role="dialog" id="cart_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Mi Carrito</h5>
+                <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-center">Nombre</th>
+                            <th class="text-center">Precio/unidad</th>
+                            <th class="text-center">Cantidad</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let cart of carts">
+                            <td class="text-center">{{ cart.product.product }}</td>
+                            <td class="text-center">{{ cart.product.price }}</td>
+                            <td class="text-center">{{ cart.quantity }}</td>
+                            <td>
+                                <button (click)="removeFromCart(cart.id_cart)" type="button" class="btn btn-danger btn-sm">
+                                    Eliminar
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" style="margin-right: 10px;">Pagar</button>
+                <button (click)="deleteCart('OIMF930721J93')" type="submit" class="btn btn-danger">Eliminar Carrito</button>
+                <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+            
+        </div>
+    </div>
+</div>

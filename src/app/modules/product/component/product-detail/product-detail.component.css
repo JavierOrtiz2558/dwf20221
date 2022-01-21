@@ -10,14 +10,23 @@
 
 .botonder{
     margin-right: 25px;
+    font-size: 125%;
 }
 .botonizq{
     margin-left: 25px;
+    font-size: 125%;
+    margin-top: 2px;
 }
 
 .cantidad{
-    width:45px; 
-    height:30px;
+    width:50px; 
+    height:38px;
     margin-right: 10px;
+    margin-left: 10px;
     margin-top: 2px;
+}
+.cantidadtext{
+    font-size: 125%;
+    text-align: right;
+    font-weight: bold;
 }
