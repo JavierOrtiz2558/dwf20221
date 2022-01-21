@@ -5,6 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CustomerComponent } from './component/customer/customer.component';
 import { CustomerDetailComponent } from './component/customer-detail/customer-detail.component';
 import { NgxPhotoEditorModule } from "ngx-photo-editor";
+import { CartComponent } from './component/cart/cart.component';
 
 
 
@@ -12,7 +13,8 @@ import { NgxPhotoEditorModule } from "ngx-photo-editor";
   declarations: [
     RegionComponent,
     CustomerComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    CartComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { NgxPhotoEditorModule } from "ngx-photo-editor";
   exports: [
     RegionComponent,
     CustomerComponent,
-    CustomerDetailComponent
+    CustomerDetailComponent,
+    CartComponent
   ]
 })
 export class CustomerModule { }

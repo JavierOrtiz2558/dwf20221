@@ -5,15 +5,15 @@ import { RegionComponent } from './modules/customer/component/region/region.comp
 import { HomeComponent } from '../app/modules/home/component/home/home.component'
 import { CategoryComponent } from './modules/product/component/category/category.component';
 import { FilterComponent } from './modules/product/component/filter/filter.component';
-import { ProductComponent } from './modules/product/component/product/product.component';
-import { ProductDetailComponent } from './modules/product/component/product-detail/product-detail.component';
+import { CartComponent } from './modules/customer/component/cart/cart.component';
 
 const routes: Routes = [
   {path: 'exchange-rate', component: ExchangeRateComponent},
   {path: 'region', component: RegionComponent},
   {path: '', component: HomeComponent},
   {path: 'category', component: CategoryComponent},
-  {path: 'filter', component: FilterComponent}
+  {path: 'filter', component: FilterComponent},
+  {path: 'cart', component: CartComponent}
 ];
 
 @NgModule({
