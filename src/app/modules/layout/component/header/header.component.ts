@@ -4,6 +4,7 @@ import { CategoryService } from 'src/app/modules/product/_service/category.servi
 import { Carts } from 'src/app/modules/customer/_model/carts';
 import { CartService } from 'src/app/modules/customer/_service/cart.service';
 import { InvoiceService } from 'src/app/modules/customer/_service/invoice.service';
+import { FormBuilder, Validators } from '@angular/forms';
 
 declare var $: any;
 
@@ -26,9 +27,16 @@ export class HeaderComponent implements OnInit {
   cart: Carts = new Carts();
   articulos: number = 1;
 
+  formulario = this.formBuilder.group({
+    num: ['', Validators.required],
+    expira: ['', Validators.required],
+    codigo: ['', Validators.required],
+  });
+
   constructor(
     private cateory_service: CategoryService,
     private cart_service: CartService,
+    private formBuilder: FormBuilder,
     private invoice_service: InvoiceService
   ) { }
 
@@ -63,6 +71,17 @@ export class HeaderComponent implements OnInit {
   closeModal(){
     $("#cart_modal").modal("hide");
     this.submitted = false;
+  }
+
+  closeModalTarjeta(){
+    $("#tarjeta_modal").modal("hide");
+    this.submitted = false;
+  }
+
+  pagoTarjeta(){
+    this.submitted = true;
+    this.formulario.reset();
+    $("#tarjeta_modal").modal("show");
   }
 
   removeFromCart(id_cart: number){
@@ -141,34 +160,12 @@ export class HeaderComponent implements OnInit {
   }
 
   purchase(rfc: string){
-    Swal.fire({
-      title: 'Deseas realizar la compra?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Si, comprar'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.invoice_service.purchase(rfc).subscribe(
-          res => {
-            Swal.fire({
-              icon: 'success',
-              title: 'Compra exitosa, revisa tus facturas!',
-              showConfirmButton: false,
-              timer: 1750
-            })
-            this.closeModal();
-          },
-          err => {console.log(err),
-            Swal.fire({
-              icon: 'error',
-              title: 'La compra no se completo con exito',
-              showConfirmButton: false,
-              timer: 1750
-            })}
-        )
-      }
-    })
+    this.invoice_service.purchase(rfc).subscribe(
+      res => {
+        console.log("agregado");
+      },
+      err => console.log(err)
+    )
   }
+
 }

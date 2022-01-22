@@ -62,11 +62,50 @@
             </div>
 
             <div class="modal-footer">
-                <button (click)="purchase('OIMF930721J93')" type="submit" class="btn btn-success" style="margin-right: 10px;">Pagar</button>
+                <button (click)="pagoTarjeta()" type="submit" class="btn btn-success" style="margin-right: 10px;">Pagar</button>
                 <button (click)="deleteCart('OIMF930721J93')" type="submit" class="btn btn-danger">Eliminar Carrito</button>
                 <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             </div>
             
+        </div>
+    </div>
+</div>
+
+<div class="modal" tabindex="-1" role="dialog" id="tarjeta_modal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Informacion de Tarjeta</h5>
+                <button (click)="closeModalTarjeta()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <form >
+                    <div class="form-group">
+                        <label for="rate">Ingresa el Numero de tarjeta<span class="text-damanger">*</span></label>
+                        <input type="text" class="form-control marginForm" id="num" formControlName="num" placeholder="Numero de Tarjeta">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Fecha de expiracion<span class="text-damanger">*</span></label>
+                        <input type="text" class="form-control marginForm" id="expira" formControlName="expira" placeholder="Fecha Expiracion">
+                    </div>
+                    <div class="form-group">
+                        <label for="rate">Ingresa el codigo de seguridad<span class="text-damanger">*</span></label>
+                        <input type="text" class="form-control marginForm" id="codigo" formControlName="codigo" placeholder="Codigo">
+                    </div>
+                    <div>
+                        <button type="submit" (click)="purchase('OIMF930721J93')" class="btn btn-success btn-block">Pagar</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button (click)="closeModal()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+            </div>
+
         </div>
     </div>
 </div>

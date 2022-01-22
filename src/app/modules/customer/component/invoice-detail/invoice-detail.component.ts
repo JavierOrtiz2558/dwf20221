@@ -26,6 +26,16 @@ export class InvoiceDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.id_invoice = this.route.snapshot.paramMap.get('id_invoice');
+    this.getItems(this.id_invoice);
+  }
+
+  getItems(id_invoice: number){
+    this.invoice_service.getItems(id_invoice).subscribe(
+      res => {
+        this.items = res;
+      },
+      err => console.log(err)
+    )
   }
 
 }
